@@ -10,13 +10,38 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 });
 
 function markWords(words) {
-  let bodyText = document.body.innerHTML;
-  words.forEach(({ word, color }) => {
-    const regex = new RegExp(`\\b${word}\\b`, 'gi');
-    bodyText = bodyText.replace(regex, (match) => `<span class="highlight" style="background-color: ${color};">${match}</span>`);
+  const bodyTextNodes = [];
+  const walker = document.createTreeWalker(
+    document.body,
+    NodeFilter.SHOW_TEXT,
+    null,
+    false
+  );
+
+  while (walker.nextNode()) {
+    bodyTextNodes.push(walker.currentNode);
+  }
+
+  bodyTextNodes.forEach(textNode => {
+    let text = textNode.nodeValue;
+    words.forEach(({ word, color, regex }) => {
+      let pattern;
+      try {
+        pattern = regex ? new RegExp(word, 'gi') : new RegExp(`\\b${word}\\b`, 'gi');
+      } catch (e) {
+        console.error(`Invalid regex pattern: ${word}`);
+        return;
+      }
+      text = text.replace(pattern, (match) => `<span class="highlight" style="background-color: ${color};">${match}</span>`);
+    });
+
+    if (textNode.nodeValue !== text) {
+      const fragment = document.createRange().createContextualFragment(text);
+      textNode.parentNode.replaceChild(fragment, textNode);
+    }
   });
-  document.body.innerHTML = bodyText;
 }
+
 
 function clearMarks() {
   const highlights = document.querySelectorAll('.highlight');
@@ -25,3 +50,4 @@ function clearMarks() {
     span.parentNode.replaceChild(textNode, span);
   });
 }
+
