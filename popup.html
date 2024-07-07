@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Word Marker</title>
+    <style>
+      body {
+        width: 200px;
+        font-family: Arial, sans-serif;
+      }
+      .color-input {
+        width: 100%;
+        height: 25px;
+        margin-top: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Word Marker</h2>
+    <div id="wordsContainer">
+      <div class="wordEntry">
+        <input type="text" class="word" placeholder="Enter word" />
+        <input type="color" class="color-input" />
+      </div>
+    </div>
+    <button id="addWordBtn">Add Word</button>
+    <button id="markBtn">Mark Words</button>
+    <button id="clearBtn">Clear Marks</button>
+    <script src="popup.js"></script>
+  </body>
+</html>
