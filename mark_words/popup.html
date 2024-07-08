@@ -1,30 +1,31 @@
 <!DOCTYPE html>
-<html>
-  <head>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Word Marker</title>
-    <style>
-      body {
-        width: 200px;
-        font-family: Arial, sans-serif;
-      }
-      .color-input {
-        width: 100%;
-        height: 25px;
-        margin-top: 5px;
-      }
-    </style>
-  </head>
-  <body>
-    <h2>Word Marker</h2>
-    <div id="wordsContainer">
-      <div class="wordEntry">
-        <input type="text" class="word" placeholder="Enter word" />
-        <input type="color" class="color-input" />
-      </div>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Word Marker</h1>
+        <div id="wordsContainer">
+            <div class="wordEntry">
+                <input type="text" class="word" placeholder="Enter word">
+                <input type="color" class="color-input" value="#000000">
+                <label>
+                    <input type="checkbox" class="regex-checkbox"> Regex
+                </label>
+                <button class="deleteWordBtn"><i class="fas fa-times"></i></button>
+            </div>
+        </div>
+        <div class="button-group">
+            <button id="addWordBtn">Add Word</button>
+            <button id="markBtn">Mark Words</button>
+            <button id="clearBtn">Clear Marks</button>
+        </div>
     </div>
-    <button id="addWordBtn">Add Word</button>
-    <button id="markBtn">Mark Words</button>
-    <button id="clearBtn">Clear Marks</button>
     <script src="popup.js"></script>
-  </body>
+</body>
 </html>

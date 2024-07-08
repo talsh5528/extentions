@@ -42,7 +42,6 @@ function markWords(words) {
   });
 }
 
-
 function clearMarks() {
   const highlights = document.querySelectorAll('.highlight');
   highlights.forEach(span => {
@@ -50,4 +49,3 @@ function clearMarks() {
     span.parentNode.replaceChild(textNode, span);
   });
 }
-
