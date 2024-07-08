@@ -2,13 +2,19 @@
   "manifest_version": 3,
   "name": "Word Marker",
   "version": "1.0",
-  "permissions": ["activeTab", "scripting"],
-
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "contextMenus",
+    "storage"
+  ],
+  "background": {
+    "service_worker": "right-click-highlight.js"
+  },
   "action": {
     "default_popup": "popup.html",
     "default_icon": {
       "16": "icon16.png"
-	  
     }
   },
   "content_scripts": [
