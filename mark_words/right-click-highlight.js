@@ -24,7 +24,7 @@ function highlightSelection() {
   span.style.backgroundColor = '#FFFF8F';
   range.surroundContents(span);
 
-  // Optionally, save the highlighted text and page URL for future use
+  // Save the highlighted text and page URL for future use
   const highlightedText = selection.toString();
   const pageUrl = window.location.href;
   chrome.storage.local.set({ [pageUrl]: highlightedText });
